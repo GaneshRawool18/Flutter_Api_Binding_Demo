@@ -12,7 +12,9 @@ class DeleteData extends StatefulWidget {
 class _DeleteDataState extends State<DeleteData> {
   TextEditingController idController = TextEditingController();
 
-
+  void clearController() {
+    idController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,34 +35,26 @@ class _DeleteDataState extends State<DeleteData> {
               height: 100,
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
-              child: Container(
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromARGB(255, 75, 74, 75),
-                        offset: Offset(0, 4),
-                        blurRadius: 4,
-                        blurStyle: BlurStyle.outer,
-                      )
-                    ]),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 30),
-                  child: TextField(
-                    controller: idController,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      // border: const OutlineInputBorder(
-                      //     borderRadius: BorderRadius.all(Radius.circular(20)),
-                      //     borderSide: BorderSide(width: 2)),
-                      hintText: 'Enter Product ID',
-                      hintStyle: GoogleFonts.roboto(
-                          color: Colors.grey,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w300),
-                    ),
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: idController,
+                decoration: InputDecoration(
+                  label: Text(
+                    "Product URL",
+                    style: GoogleFonts.roboto(
+                        color: const Color.fromARGB(255, 82, 81, 81),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500),
                   ),
+                  // border: InputBorder.none,
+                  border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderSide: BorderSide(width: 2)),
+                  hintText: 'Enter Product URL',
+                  hintStyle: GoogleFonts.roboto(
+                      color: Colors.grey,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w300),
                 ),
               ),
             ),
@@ -69,7 +63,8 @@ class _DeleteDataState extends State<DeleteData> {
             ),
             GestureDetector(
               onTap: () {
-                Services.deleteData(context,idController);
+                Services.deleteData(context, idController);
+                clearController();
               },
               child: Container(
                 height: 50,

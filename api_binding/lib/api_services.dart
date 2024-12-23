@@ -49,7 +49,9 @@ class Services {
     log("User Post Response : ${jsonPostResponse}");
     log("User Post Response Runtimetype : ${jsonPostResponse.runtimeType}");
 
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+    FocusScope.of(context).unfocus();
+
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
       return UserPostData(userData: jsonPostResponse);
     }));
   }
@@ -58,22 +60,19 @@ class Services {
     context,
     TextEditingController id,
   ) async {
-    Uri url = Uri.parse(
-        'https://api.restful-api.dev/objects/ff808181932badb60193f40ca2661f33');
+    Uri url = Uri.parse(id.text);
     http.Response deleteResponse = await http.delete(url);
 
     log("Delete Response : ${deleteResponse.body}");
     log("Delete Response StatusCode : ${deleteResponse.statusCode}");
 
-    // String baseUrl = "https://api.restful-api.dev/objects/";
-    // String newID = id.text.trim();
-    // String mainUrl = '$baseUrl$newID';
+    FocusScope.of(context).unfocus();
 
-    if (deleteResponse.statusCode == 201) {
+    if (deleteResponse.statusCode == 200) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Response deleted successfully !'),
-          duration: Duration(seconds: 2),
+          duration: Duration(seconds: 5),
           backgroundColor: Colors.green,
         ),
       );

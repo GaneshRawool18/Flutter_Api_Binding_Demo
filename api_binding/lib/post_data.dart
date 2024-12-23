@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:api_binding/api_services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 // ignore: must_be_immutable
 class PostData extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController colorController = TextEditingController();
-  dynamic addPostData = {
-
-  };
+  dynamic addPostData = {};
   PostData({super.key});
 
   @override
@@ -29,7 +26,7 @@ class PostData extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(
-              height: 100,
+              height: 50,
             ),
             Padding(
               padding: const EdgeInsets.all(20),
@@ -131,9 +128,10 @@ class PostData extends StatelessWidget {
               height: 50,
             ),
             GestureDetector(
-            onTap: (){
-              Services.postData(context, nameController, priceController , colorController);
-            },
+              onTap: () {
+                Services.postData(
+                    context, nameController, priceController, colorController);
+              },
               child: Container(
                 height: 50,
                 width: 140,
@@ -150,11 +148,12 @@ class PostData extends StatelessWidget {
                 child: const Center(child: Text("Submit")),
               ),
             ),
+            const SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),
     );
-  
-  
   }
 }

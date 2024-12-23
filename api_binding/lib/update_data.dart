@@ -28,7 +28,39 @@ class _UpdateDataState extends State<UpdateData> {
         child: Column(
           children: [
             const SizedBox(
-              height: 100,
+              height: 50,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromARGB(255, 75, 74, 75),
+                        offset: Offset(0, 4),
+                        blurRadius: 4,
+                        blurStyle: BlurStyle.outer,
+                      )
+                    ]),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: TextField(
+                    controller: nameController,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      // border: const OutlineInputBorder(
+                      //     borderRadius: BorderRadius.all(Radius.circular(20)),
+                      //     borderSide: BorderSide(width: 2)),
+                      hintText: 'Enter Product Url',
+                      hintStyle: GoogleFonts.roboto(
+                          color: Colors.grey,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300),
+                    ),
+                  ),
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
@@ -143,6 +175,9 @@ class _UpdateDataState extends State<UpdateData> {
                     )
                   ]),
               child: const Center(child: Text("Submit")),
+            ),
+            const SizedBox(
+              height: 50,
             ),
           ],
         ),
