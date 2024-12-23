@@ -1,3 +1,4 @@
+import 'package:api_binding/api_services.dart';
 import 'package:api_binding/delete_data.dart';
 import 'package:api_binding/get_data.dart';
 import 'package:api_binding/post_data.dart';
@@ -32,10 +33,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return const GetData();
-                  }));
+                  Services.getData(context);
                 },
                 child: Container(
                   decoration: const BoxDecoration(
