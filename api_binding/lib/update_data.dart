@@ -1,17 +1,20 @@
+import 'package:api_binding/api_services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class UpdateData extends StatefulWidget {
-  const UpdateData({super.key});
+  TextEditingController nameController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  TextEditingController colorController = TextEditingController();
+  TextEditingController urlController = TextEditingController();
+  UpdateData({super.key});
 
   @override
   State<UpdateData> createState() => _UpdateDataState();
 }
 
 class _UpdateDataState extends State<UpdateData> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController priceController = TextEditingController();
-  TextEditingController colorController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +49,7 @@ class _UpdateDataState extends State<UpdateData> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: TextField(
-                    controller: nameController,
+                    controller: widget.urlController,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       // border: const OutlineInputBorder(
@@ -78,7 +81,7 @@ class _UpdateDataState extends State<UpdateData> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: TextField(
-                    controller: nameController,
+                    controller: widget.nameController,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       // border: const OutlineInputBorder(
@@ -110,7 +113,7 @@ class _UpdateDataState extends State<UpdateData> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: TextField(
-                    controller: priceController,
+                    controller: widget.priceController,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       // border: const OutlineInputBorder(
@@ -142,7 +145,7 @@ class _UpdateDataState extends State<UpdateData> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: TextField(
-                    controller: colorController,
+                    controller: widget.colorController,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       // border: const OutlineInputBorder(
@@ -161,20 +164,26 @@ class _UpdateDataState extends State<UpdateData> {
             const SizedBox(
               height: 50,
             ),
-            Container(
-              height: 50,
-              width: 140,
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.purple,
-                      offset: Offset(0, 4),
-                      blurRadius: 10,
-                      blurStyle: BlurStyle.outer,
-                    )
-                  ]),
-              child: const Center(child: Text("Submit")),
+            GestureDetector(
+              onTap: () {
+                Services.putData(widget.urlController, widget.nameController,
+                    widget.priceController, widget.colorController, context);
+              },
+              child: Container(
+                height: 50,
+                width: 140,
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.purple,
+                        offset: Offset(0, 4),
+                        blurRadius: 10,
+                        blurStyle: BlurStyle.outer,
+                      )
+                    ]),
+                child: const Center(child: Text("Submit")),
+              ),
             ),
             const SizedBox(
               height: 50,

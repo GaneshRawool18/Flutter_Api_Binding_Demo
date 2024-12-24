@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return const UpdateData();
+                    return UpdateData();
                   }));
                 },
                 child: Container(
