@@ -45,7 +45,7 @@ class _UserUpdatedDataState extends State<UserUpdatedData> {
       appBar: AppBar(
         title: Text("User Updated Data Page",
             style:
-                GoogleFonts.roboto(fontSize: 23, fontWeight: FontWeight.w500)),
+                GoogleFonts.roboto(fontSize: 18, fontWeight: FontWeight.w500)),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 212, 231, 229),
       ),
